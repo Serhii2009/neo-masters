@@ -11,6 +11,7 @@ The codebase is organized modularly by discipline. Ongoing and completed courses
 ```text
 neo-masters/
 ├── .gitignore
+├── requirements.txt
 ├── README.md
 └── python-core/                      # Core Python engineering and automation tasks
     └── goit-pycore-hw-03/            # Current assignment sprint
