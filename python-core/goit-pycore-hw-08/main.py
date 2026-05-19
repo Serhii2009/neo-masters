@@ -1,3 +1,4 @@
+import pickle
 from collections import UserDict
 from datetime import datetime, timedelta
 
@@ -107,6 +108,19 @@ class AddressBook(UserDict):
         return result
 
 
+def save_data(book: AddressBook, filename: str = "addressbook.pkl") -> None:
+    with open(filename, "wb") as f:
+        pickle.dump(book, f)
+
+
+def load_data(filename: str = "addressbook.pkl") -> AddressBook:
+    try:
+        with open(filename, "rb") as f:
+            return pickle.load(f)
+    except FileNotFoundError:
+        return AddressBook()
+
+
 def input_error(func):
     def inner(*args, **kwargs):
         try:
@@ -198,7 +212,7 @@ def show_all(book: AddressBook) -> str:
 
 
 def main() -> None:
-    book = AddressBook()
+    book = load_data()
     print("Welcome to the assistant bot!")
 
     while True:
@@ -209,6 +223,7 @@ def main() -> None:
             continue
 
         if command in ("close", "exit"):
+            save_data(book)
             print("Good bye!")
             break
         elif command == "hello":
