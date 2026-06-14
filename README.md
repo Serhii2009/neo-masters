@@ -13,20 +13,46 @@ neo-masters/
 ├── .gitignore
 ├── requirements.txt
 ├── README.md
-└── python-core/                      # Core Python engineering and automation tasks
-    └── goit-pycore-hw-03/            # Current assignment sprint
-        ├── task_1.py                 # Date utility automation
-        ├── task_2.py                 # Deterministic lottery generator
-        ├── task_3.py                 # E.164 phone string normalizer
-        └── task_4.py                 # Rolling 7-day calendar scheduler
+│
+├── python-core/                        # ✅ Core Python engineering and automation
+│   ├── goit-pycore-hw-03/
+│   ├── goit-pycore-hw-04/
+│   ├── goit-pycore-hw-05/
+│   ├── goit-pycore-hw-06/
+│   ├── goit-pycore-hw-07/
+│   ├── goit-pycore-hw-08/
+│   ├── paper-review-01/
+│   └── paper-review-02/
+│
+└── mathematics/                        # 🔄 Mathematics for AI/ML (in progress)
+    ├── hw-01/
+        └── hw_01.ipynb
 ```
 
 ## Tracked Disciplines
 
-- **`python-core/`**
-  Focused on foundational software design, data structures, algorithm optimization, and automation script workflows essential for building data pipelines and preprocessing utilities in AI/ML workflows.
+### ✅ `python-core/` — Completed
 
-_Future core AI, Machine Learning, Deep Learning, and MLOps engineering modules will be structured into separate top-level directories as the curriculum progresses._
+Focused on foundational software design, data structures, algorithm optimization, and automation script workflows essential for building data pipelines and preprocessing utilities in AI/ML workflows. Includes 8 homework sprints and 2 paper reviews.
+
+**Final Team Project:** [smart-assistant-cli](https://github.com/Serhii2009/smart-assistant-cli) — a command-line personal assistant built collaboratively, integrating contact management, notes, and scheduling with a clean CLI interface.
+
+---
+
+### 🔄 `mathematics/` — In Progress
+
+Covers the mathematical foundations required for modern AI/ML engineering: **linear algebra** (vector spaces, matrix decompositions, eigenvalues), **calculus** (differentiation, gradients, optimization), and **fundamentals of probability & statistics** (distributions, inference, Bayes' theorem). Each homework is submitted as a Google Colab notebook (`.ipynb`). Two peer-reviewed scientific article analyses are included as paper reviews.
+
+| #   | Deliverable    | Status         |
+| --- | -------------- | -------------- |
+| 1   | Homework 1     | 🔄 In Progress |
+| 2   | Homework 2     | ⬜ Pending     |
+| 3   | Homework 3     | ⬜ Pending     |
+| 4   | Homework 4     | ⬜ Pending     |
+| 5   | Homework 5     | ⬜ Pending     |
+| 6   | Homework 6     | ⬜ Pending     |
+| —   | Paper Review 1 | ⬜ Pending     |
+| —   | Paper Review 2 | ⬜ Pending     |
 
 ## Getting Started
 
