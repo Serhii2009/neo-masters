@@ -17,3 +17,6 @@ ENV/
 *.njsproj
 *.sln
 *.swp
+
+# Cached ESC-50 audio (downloaded by numerical-python/hw-06)
+esc50_audio/
