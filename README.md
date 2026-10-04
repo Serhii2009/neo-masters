@@ -15,19 +15,12 @@ neo-masters/
 ├── README.md
 │
 ├── python-core/                        # ✅ Core Python engineering and automation
-│   ├── goit-pycore-hw-03/
-│   ├── goit-pycore-hw-04/
-│   ├── goit-pycore-hw-05/
-│   ├── goit-pycore-hw-06/
-│   ├── goit-pycore-hw-07/
-│   ├── goit-pycore-hw-08/
-│   ├── paper-review-01/
-│   └── paper-review-02/
-│
-└── mathematics/                        # 🔄 Mathematics for AI/ML (in progress)
-    ├── hw-01/
-        └── hw_01.ipynb
+├── mathematics/                        # ✅ Mathematics for AI/ML
+├── basic-dsa/                          # ✅ Data structures and algorithms
+└── numerical-python/                   # ✅ Numerical programming for AI/ML
 ```
+
+Every discipline follows the same layout: one directory per assignment, plus `paper-review-*` directories for the reviewed scientific publications.
 
 ## Tracked Disciplines
 
@@ -39,20 +32,21 @@ Focused on foundational software design, data structures, algorithm optimization
 
 ---
 
-### 🔄 `mathematics/` — In Progress
+### ✅ `mathematics/` — Completed
 
 Covers the mathematical foundations required for modern AI/ML engineering: **linear algebra** (vector spaces, matrix decompositions, eigenvalues), **calculus** (differentiation, gradients, optimization), and **fundamentals of probability & statistics** (distributions, inference, Bayes' theorem). Each homework is submitted as a Google Colab notebook (`.ipynb`). Two peer-reviewed scientific article analyses are included as paper reviews.
 
-| #   | Deliverable    | Status         |
-| --- | -------------- | -------------- |
-| 1   | Homework 1     | 🔄 In Progress |
-| 2   | Homework 2     | ⬜ Pending     |
-| 3   | Homework 3     | ⬜ Pending     |
-| 4   | Homework 4     | ⬜ Pending     |
-| 5   | Homework 5     | ⬜ Pending     |
-| 6   | Homework 6     | ⬜ Pending     |
-| —   | Paper Review 1 | ⬜ Pending     |
-| —   | Paper Review 2 | ⬜ Pending     |
+---
+
+### ✅ `basic-dsa/` — Completed
+
+Classical data structures and algorithms: **linked lists**, stacks and queues, **trees and heaps**, **graphs** with shortest-path search, sorting, substring search, **greedy methods and dynamic programming**, and Monte Carlo simulation. Solutions are plain Python modules, with the measurements and conclusions for each task documented alongside them. Includes a final project and 2 paper reviews.
+
+---
+
+### ✅ `numerical-python/` — Completed
+
+Applies numerical methods to practical AI/ML problems: **clustering** and **matrix decompositions**, distance metrics and correlation analysis, the **discrete Fourier transform**, probabilistic and discriminant classification, and parameter optimization by **gradient descent**, **reinforcement learning** and **genetic algorithms**. Each assignment is a Google Colab notebook (`.ipynb`). Includes a final project and 2 paper reviews.
 
 ## Getting Started
 
