@@ -1,0 +1,100 @@
+Project hw2_customer_churn {
+  database_type: 'PostgreSQL'
+  Note: 'Telco churn: business entities (3NF) + feature store (offline history / online serving)'
+}
+
+Table hw2_customers {
+  customer_id    bigint      [pk]
+  signup_date    date        [not null]
+  senior_citizen boolean     [not null, default: false]
+  has_partner    boolean     [not null]
+  has_dependents boolean     [not null]
+  state_code     varchar(2)  [not null, note: 'CHECK ^[A-Z]{2}$']
+}
+
+Table hw2_services {
+  service_id   integer      [pk]
+  service_code varchar(30)  [not null, unique]
+  service_name text         [not null]
+  category     varchar(20)  [not null, note: 'CHECK IN (phone, internet, streaming, add_on)']
+  list_price   numeric(8,2) [not null, note: 'CHECK >= 0']
+}
+
+Table hw2_contracts {
+  contract_id       bigint      [pk]
+  customer_id       bigint      [not null, ref: > hw2_customers.customer_id]
+  contract_type     varchar(20) [not null, note: 'CHECK IN (month_to_month, one_year, two_year)']
+  payment_method    varchar(30) [not null, note: 'CHECK IN (electronic_check, mailed_check, bank_transfer, credit_card)']
+  paperless_billing boolean     [not null]
+  start_date        date        [not null]
+  end_date          date        [note: 'NULL = active; CHECK end_date > start_date']
+}
+
+Table hw2_contract_services {
+  contract_id   bigint       [not null, ref: > hw2_contracts.contract_id]
+  service_id    integer      [not null, ref: > hw2_services.service_id]
+  added_on      date         [not null]
+  monthly_price numeric(8,2) [not null, note: 'price of the service in this contract; CHECK >= 0']
+  indexes {
+    (contract_id, service_id) [pk]
+  }
+  Note: 'Bridge table for the natural N:M between contracts and services'
+}
+
+Table hw2_customer_features_offline {
+  customer_id         bigint        [not null, ref: > hw2_customers.customer_id]
+  valid_from          timestamptz   [not null, note: 'inclusive']
+  valid_to            timestamptz   [note: 'exclusive; NULL = current version']
+  tenure_months       integer       [not null]
+  monthly_charges     numeric(8,2)  [not null]
+  total_charges       numeric(12,2) [not null]
+  active_services_cnt integer       [not null]
+  support_tickets_30d integer       [not null]
+  contract_type       varchar(20)   [not null]
+  indexes {
+    (customer_id, valid_from) [pk]
+    (customer_id, valid_from) [name: 'hw2_idx_cust_feat_asof', note: 'valid_from DESC']
+  }
+  Note: 'SCD2 feature history, interval [valid_from, valid_to)'
+}
+
+Table hw2_training_events {
+  event_id          bigint      [pk, increment]
+  customer_id       bigint      [not null, ref: > hw2_customers.customer_id]
+  prediction_ts     timestamptz [not null]
+  label_horizon_end timestamptz [not null, note: 'CHECK > prediction_ts']
+  churn_in_horizon  boolean     [not null, note: 'target']
+  indexes {
+    (customer_id, prediction_ts) [unique]
+  }
+}
+
+Table hw2_customer_features_online {
+  customer_id         bigint        [pk, ref: - hw2_customers.customer_id]
+  tenure_months       integer       [not null]
+  monthly_charges     numeric(8,2)  [not null]
+  total_charges       numeric(12,2) [not null]
+  active_services_cnt integer       [not null]
+  support_tickets_30d integer       [not null]
+  contract_type       varchar(20)   [not null]
+  state_code          varchar(2)    [not null, note: 'denormalized copy from hw2_customers']
+  senior_citizen      boolean       [not null, note: 'denormalized copy from hw2_customers']
+  feature_ts          timestamptz   [not null, note: 'valid_from of the source version']
+  updated_at          timestamptz   [not null, default: `now()`]
+}
+
+TableGroup business_entities {
+  hw2_customers
+  hw2_services
+  hw2_contracts
+  hw2_contract_services
+}
+
+TableGroup feature_store_offline {
+  hw2_customer_features_offline
+  hw2_training_events
+}
+
+TableGroup feature_store_online {
+  hw2_customer_features_online
+}
