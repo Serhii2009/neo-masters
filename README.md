@@ -17,7 +17,8 @@ neo-masters/
 ├── python-core/                        # ✅ Core Python engineering and automation
 ├── mathematics/                        # ✅ Mathematics for AI/ML
 ├── basic-dsa/                          # ✅ Data structures and algorithms
-└── numerical-python/                   # ✅ Numerical programming for AI/ML
+├── numerical-python/                   # ✅ Numerical programming for AI/ML
+└── rdb/                                # 🔄 Relational databases and SQL (in progress)
 ```
 
 Every discipline follows the same layout: one directory per assignment, plus `paper-review-*` directories for the reviewed scientific publications.
@@ -47,6 +48,12 @@ Classical data structures and algorithms: **linked lists**, stacks and queues, *
 ### ✅ `numerical-python/` — Completed
 
 Applies numerical methods to practical AI/ML problems: **clustering** and **matrix decompositions**, distance metrics and correlation analysis, the **discrete Fourier transform**, probabilistic and discriminant classification, and parameter optimization by **gradient descent**, **reinforcement learning** and **genetic algorithms**. Each assignment is a Google Colab notebook (`.ipynb`). Includes a final project and 2 paper reviews.
+
+---
+
+### 🔄 `rdb/` — In Progress
+
+Relational data modelling and SQL for data-intensive work: **ER design and normalization**, DDL and DML in **PostgreSQL**, joins, aggregates and set operations, **window functions and CTEs**, **JSONB** for semi-structured data, and indexing read through query plans. The assignments build the kind of dataset a model is actually trained on, from a point-in-time feature store to time-series features over millions of rows. Each one is a Google Colab notebook (`.ipynb`) that provisions its own PostgreSQL instance, so it runs end to end without external setup. Includes 2 paper reviews.
 
 ## Getting Started
 
